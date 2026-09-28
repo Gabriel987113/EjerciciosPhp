@@ -1,86 +1,83 @@
-<?php
-// JUEGO DE PIEDRA, PAPEL Y TIJERAS VERSION INCOMPLETA
-//-------------------------------
-// Caracteres asociadas a las logos 
-// PIEDRA (Puño derecho)
-// PIEDRA2 (Puño Izquierdo / jugador 2 ) 
-define ('PIEDRA',   "&#x1F91C;");
-define ('PIEDRA2',  "&#x1F91B;");
-define ('TIJERAS',  "&#x1F596;");
-define ('PAPEL',    "&#x1F91A;" );
+    <?php
 
-// Tabla de mensajes en función del ganador
-$tmsg = [
-          "¡Empate !",
-          " Ha ganado el jugador 1",
-          " Ha ganado el jugador 2"
-        ];
+    $numeros = [];
+
+    for($i=0; $i<20; $i++){
+        $numeros[]=rand(1,10);
+    }
+
+    function obtenerMax($array){
+ 
+     $max=$array[0];
+
+     foreach($array as $numero){
+        if($numero>$max){
+            $max=$numero;
+        }
+     }
+
+     return $max;
+    }
+
+    function obtenerMin($array){
+        $min=$array[0];
+
+        foreach($array as $num){
+            if($num<$min){
+                $min=$num;
+            }
+        }
+
+        return $min;
+    }
+
+    function obtenerMasRepetido($array){
+        $masRepetido=$array[0];
+        $contadorMasVeces=0;
+
+        foreach($array as $numero){
+            $cantidad=0;
+
+            foreach($array as $valor){
+                if($numero==$valor){
+                    $cantidad++;
+                }
+            }
+
+              if($cantidad>$contadorMasVeces){
+            $contadorMasVeces=$cantidad;
+            $masRepetido=$numero;
+        }
+
+        }
+
+        return $masRepetido;
+    }
 
 
-/**
- *  Calcula el ganador 
- *  Parámetros: Dos valores PIEDRA, PAPEL O TIJERA
- *  Resultado: 0 (Empate),1 (1 Gana jugador 1), 2 (Gana jugador 2)   
- *  
- */
-
-function calcularGanador (String $valor1, String $valor2): int{
-    
-
-      if($valor1==$valor2){
-        return 0;
-      }else if($valor1==PIEDRA AND $valor2==TIJERAS){
-        return 1;
-      }else if($valor1==PAPEL AND $valor2==PIEDRA){
-        return 1;
-      }else if($valor1==TIJERAS AND $valor2==PAPEL) {
-        return 1;
-      }else{
-          return 2;
-      }
-}
-/**
- *  Obtiene un valor aleatorio PIEDRA, PAPEL O TIJERAS
- * @return string
- */
-function obtenerFicha (): string {
-   $eleccion = [PIEDRA, PAPEL, TIJERAS];
-   $aleatorio = random_int(0,2);
-   return $eleccion[$aleatorio];
-  }
-
-
-$jugador1 = obtenerFicha();
-$jugador2 = obtenerFicha();
-$pos = calcularGanador($jugador1,$jugador2);
-$mensaje =  $tmsg[$pos]; 
-
-// Si el jugador 2 saca piedra, se cambia el símbolo para que sea el puño izquierdo
-$jugador2 = ($jugador2 == PIEDRA)?PIEDRA2:$jugador2;
-
+    $maximo=obtenerMax($numeros);
+    $minimo=obtenerMin($numeros);
+    $masRepetido=obtenerMasRepetido($numeros);
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Online PHP Script Execution</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-<h1>¡Piedra, papel, tijera!</h1>
-
-    <p>Actualice la página para mostrar otra partida.</p>
-
     <table>
-      <tr>
-        <th>Jugador 1</th>
-        <th>Jugador 2</th>
-      </tr>
-      <tr>
-        <td><span style="font-size: 7rem"><?= $jugador1; ?></span></td>
-        <td><span style="font-size: 7rem"><?= $jugador2; ?></span></td>
-      </tr>
-      <tr>
-        <th colspan="2"><?= $mensaje ?></th>
-      </tr>
+        <tr>
+            <?php
+            foreach($numeros as $numero){
+                echo "<td>$numero</td>";
+            }
+             ?>
+        </tr>
     </table>
+    <p>Valor maximo: <?php echo $maximo    ?></p>
+    <p>Valor minimo: <?php echo $minimo   ?></p>
+    <p>Valor mas repetido: <?php echo $masRepetido?></p>
 </body>
 </html>
