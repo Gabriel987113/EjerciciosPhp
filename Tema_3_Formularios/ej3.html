@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>FORMULARIO CON CONTROLES HTML</h2>
+    <form action="ej3.php" method="post">
+      <label>Numero 1</label>
+      <input type="number" name="primerNumero">
+
+      <br><br>
+      
+      <label>Numero 2 (range 1-100)</label>
+      <input type="range" name="segundoNumero" min="10" max="100">
+
+      <br><br>
+
+      <label>estaciones (list)</label>
+      <input type="text" name="estaciones" list="lista-estaciones">
+      <datalist id="lista-estaciones">
+        <option value="Primavera">
+        <option value="Verano">
+        <option value="Otoño"></option>
+        <option value="Invierno"></option>
+              
+      </datalist>
+
+      <br><br>
+      
+      <label>Color favorito</label>
+      <input type="color" name="colores">
+
+      <br><br>
+
+      <label>Nombre</label>
+      <input type="text" name="nombre">
+
+      <br><br>
+
+      <label>Email</label>
+      <input type="email" name="correo">
+
+      <br><br>
+
+      <label>Fecha de nacimiento</label>
+      <input type="date" name="Fecha">
+
+      <br><br>
+
+      <label>Edad de (0 a 150)</label>
+      <input type="number" name="numeros" min="0" max="150">
+
+
+      <br><br>
+
+      <label>Pagina</label>
+      <input type="url" name="pagina">
+
+      <br><br>
+
+      <label>Horario de </label> <input type="time" name="hor1"> 
+      <p> a </p> <input  type="time" name="hor2">
+
+      <br><br>
+      <button type="submit">Enviar consulta</button>
+      
+      
+      
+    </form>
+</body>
+</html>

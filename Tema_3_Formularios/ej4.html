@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Formulario con multiples campos</h2>
+    <form action="ej4.php" method="post">
+     <label>Nombre</label>
+     <input type="text" name="nombre">
+
+     <br><br>
+
+     <label>Contraseña</label>
+     <input type="password" name="contraseña">
+
+     <br><br><hr>
+
+     <label>Rojo</label>
+     <input type="radio" name="color" value="rojo">
+     <br><br>
+
+     <label>Azul</label>
+     <input type="radio" name="color" value="azul">
+     <br><br>
+
+     <label>Verde</label>
+     <input type="radio" name="color" value="verde">
+     <br><br><hr>
+
+     <label>Quiero recibir anuncios</label>
+     <input type="checkbox" name="anuncios" value="si">
+      <br><br>
+      <label>Ingles</label>
+      <input type="checkbox" name="idiomas[]" value="ingles">
+      <label>Frances</label>
+      <input type="checkbox" name="idiomas[]" value="frances">
+      <label>Aleman</label>
+      <input type="checkbox" name="idiomas[]" value="aleman">
+
+      <br><br>
+
+      <label>Año de finalizacion de estudios</label>
+      <select name="anio_estudios">
+        <option value="2014">2014</option>
+        <option value="2016" selected>2016</option>
+      </select>
+
+      <br><br>
+
+      <label>Multiple:</label>
+      <select name="ciudades[]" multiple>
+        <option value="asturias">Asturias</option>
+        <option value="barcelona">Barcelona</option>
+        <option value="sevilla">Sevilla</option>
+      </select>
+
+      <br><br><hr>
+
+      <label>Textarea:</label>
+      <textarea name="textoArea"></textarea>
+
+      <br><br><hr>
+
+      <label>Botonos</label>
+      <button type="submit">Enviar </button>
+      <button type="reset">Resetear</button>
+     
+    </form>
+</body>
+</html>
