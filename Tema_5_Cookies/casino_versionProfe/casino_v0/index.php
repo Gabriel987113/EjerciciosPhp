@@ -1,13 +1,9 @@
 <?php
 session_start();
-
 $msg="";
-// Comprobar si el usuario quiere reiniciar la partida
-if(isset($_GET["reiniciar"])){
-  unset($_SESSION["disponible"]);
-}
-
 //CONTROLAR LAS VISITAS
+if(!isset($_SESSION["visitaContada"])){
+ 
 if(isset($_COOKIE["visitas"])){
 $visitas = $_COOKIE["visitas"] +1;
 }else{
@@ -15,18 +11,30 @@ $visitas = $_COOKIE["visitas"] +1;
 }
 
 setcookie("visitas", $visitas, time() + (30 * 24 * 60 * 60));
+$_SESSION["visitaContada"] = true;
+}else{
+  $visitas=$_COOKIE["visitas"];
+}
+
+// Comprobar si el usuario quiere reiniciar la partida
+if(isset($_POST["reiniciar"])){
+  unset($_SESSION["disponible"]);
+
+  require_once "form_bienvenida.php";
+  exit();
+}
 
 // Entra en el casino --------------------------------
 if (! isset($_SESSION['disponible'])) {//Comprobamos si existe dinero en la sesión.
 
     if(!isset($_POST['cantidadini'])){//Si no existe, comprobamos si el usuario ha enviado el dinero inicial.
       //Si no lo ha enviado, mostramos form_inicio.php y detenemos PHP.
-     require_once "form_inicio.php";
+     require_once "form_bienvenida.php";
       exit();
     }
 
     if($_POST["cantidadini"]<=0){
-      require_once "form_inicio.php";
+      require_once "form_bienvenida.php";
      exit();
     }
 
@@ -42,7 +50,7 @@ if (isset($_POST["apostar"])) {
 
 // Si abandona o ya no le queda dinero -------------------------
 if (isset($_POST["dejar"]) || ($_SESSION["disponible"] == 0) ) {
-  require_once "form_final.php";
+  require_once "despedida.php";
    exit();
 } 
 // Muestro el formulario si puede seguir apostando
@@ -83,4 +91,3 @@ function procesarApuesta(int $valorapuesta, int & $saldodisponible, string $apue
     
   return $msgresultado;
 }
-
