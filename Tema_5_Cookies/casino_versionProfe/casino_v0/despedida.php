@@ -4,11 +4,14 @@
 <title>Minicasino</title>
 </head>
 <body>
-<p><?= $msg ?> </p>
 <p>
  Muchas gracias por jugar con nosotros. <br> 
  Su resultado final es de <?= $_SESSION["disponible"] ?> Euros <br>
- <input type="button" value="  VOLVER A JUGAR " onclick="location.href='<?=$_SERVER['PHP_SELF'];?>?reiniciar=1'">
+<form method="post">
+    <button type="submit" name="reiniciar" value="1">
+        VOLVER A JUGAR
+    </button>
+</form>
 </p>
 </body>
 </html>
