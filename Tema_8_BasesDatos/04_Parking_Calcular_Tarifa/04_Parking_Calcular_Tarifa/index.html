@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><title>Parking</title></head>
+<body>
+    <h2>CALCULAR TICKET DEL PARKING</h2>
+    <form method="POST" action="procesar.php">
+        <label>Matrícula:</label>
+        <input type="text" name="matricula" required>
+        <br><br>
+        <label>Tipo de vehículo:</label>
+        <select name="tipo">
+            <option value="coche">Coche</option>
+            <option value="moto">Moto</option>
+        </select>
+        <br><br>
+        <label>Número de horas:</label>
+        <input type="number" name="horas" min="1" max="24" required>
+        <br><br>
+        <input type="submit" value="Calcular ticket">
+    </form>
+</body>
+</html>
